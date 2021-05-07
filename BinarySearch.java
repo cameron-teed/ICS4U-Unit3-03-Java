@@ -37,31 +37,27 @@ final class BinarySearch {
   *
   * @param userArray
   * @param userNumber
-  * @param midIndex
   * @param lowIndex
   * @param highIndex
   * @return binarySearch
   */
-  static int binarySearch(final int[] userArray, final int userNumber,
-                               final int midIndex, final int lowIndex,
-                                                final int highIndex) {
+  public static int binarySearch(final int[] userArray, final int userNumber,
+                                   final int lowIndex, final int highIndex) {
     // Checks to see if number is in the index
     if (lowIndex > highIndex) {
       // Returns -1
       return -1;
     } else {
       // Finds the middle of the index
-      midIndex = (lowIndex + highIndex) / 2;
+      int midIndex = (lowIndex + highIndex) / 2;
       // Check if the indexed number is less than the user number
       if (userArray[midIndex] < userNumber) {
         // Returns the lowest index number + 1
-        return binarySearch(userArray, userNumber, midIndex, lowIndex + 1,
-                                                               highIndex);
+        return binarySearch(userArray, userNumber, lowIndex + 1, highIndex);
       // Check if the indexed number is greater than the user number
       } else if (userArray[midIndex] > userNumber) {
         // Returns the highest index number - 1
-        return binarySearch(userArray, userNumber, midIndex, lowIndex,
-                                                       highIndex - 1);
+        return binarySearch(userArray, userNumber, lowIndex, highIndex - 1);
       } else {
         // Returns where the index number is located
         return midIndex;
@@ -77,10 +73,6 @@ final class BinarySearch {
 
       // Initializing array of numbers
       int[] randomNumberArray = new int[ARRAY_SIZE];
-
-      // Initializing the middle number
-      int midIndex = 0;
-
 
       // Adding numbers to the array
       for (int counter = 0; counter < randomNumberArray.length; counter++) {
@@ -112,7 +104,7 @@ final class BinarySearch {
       } else {
         // Using binary search to find the user's chosen number in the array
         int searchResult = binarySearch(numberArray, searchNumber,
-                                        midIndex, 0, numberArray.length - 1);
+                                         0, numberArray.length - 1);
         // Checks if user inputted an indexed number
         if (searchResult > -1) {
           // Outputing the results of the search
